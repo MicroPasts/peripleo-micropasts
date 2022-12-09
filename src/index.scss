@@ -5,9 +5,9 @@ html, body, #app {
   overflow:hidden;
   font-size:14px;
   color:#333;
-  
+
   * {
-    font-family:'Quicksand', sans-serif;
+    font-family:'Poppins', sans-serif;
   }
 
 }
@@ -73,10 +73,10 @@ $bl-red-hover:#e55767;
 }
 
 @mixin linear-gradient($start, $end) {
-  background-image: -webkit-linear-gradient(top, $start, $end); 
-  background-image:    -moz-linear-gradient(top, $start, $end); 
-  background-image:     -ms-linear-gradient(top, $start, $end); 
-  background-image:      -o-linear-gradient(top, $start, $end); 
+  background-image: -webkit-linear-gradient(top, $start, $end);
+  background-image:    -moz-linear-gradient(top, $start, $end);
+  background-image:     -ms-linear-gradient(top, $start, $end);
+  background-image:      -o-linear-gradient(top, $start, $end);
   background-image:         linear-gradient(top, $start, $end);
 }
 

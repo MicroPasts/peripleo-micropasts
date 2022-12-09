@@ -12,7 +12,7 @@ const tour = [{
 },{
   target: '.p6o-facets',
   title: 'The Filter Panel',
-  content: 'With the filter panel open, the map shows different types of data in different colors.',
+  content: 'With the filter panel open, the map shows types of data in different colors.',
   disableBeacon: true
 },{
   target: '.p6o-facets-carousel',
@@ -31,10 +31,11 @@ const tour = [{
   target: 'body',
   placement: 'center',
   title: 'That\'s it!',
-  content: 
+  content:
     <span>
       Thanks for taking the time. Have fun exploring our Peripleo mapping prototype.
-      If you want to know more about the software, <a href="https://github.com/britishlibrary/peripleo-lanc" target="_blank">click here</a>.
+      If you want to know more about the creation of this software, please visit the
+     <a href="https://github.com/britishlibrary/peripleo-lanc" target="_blank">project's documentation</a>.
     </span>
 }];
 

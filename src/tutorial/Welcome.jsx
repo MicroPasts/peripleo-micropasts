@@ -11,9 +11,9 @@ const Welcome = props => {
   const toggleDoNotShow = () => {
     if (checked)
       localStorage.removeItem(BEEN_HERE_TOKEN);
-    else 
+    else
       localStorage.setItem(BEEN_HERE_TOKEN, true);
-    
+
     setChecked(!checked);
   }
 
@@ -23,30 +23,30 @@ const Welcome = props => {
         <h1>Welcome!</h1>
 
         <p>
-          Welcome to Peripleo, the map prototype for 
-          the <strong>Locating a National Collection</strong> project. 
-          Take the tour to learn about the main user interface elements.
+          Welcome to Mapping the Bronze Age Index. This builds on Peripleo,
+          the map prototype built for the <strong>Locating a National Collection</strong>
+          project. Take the tour to learn about the main user interface elements.
         </p>
-        
+
         <div className="p6o-welcome-buttons">
           <label>
-            <input 
-              type="checkbox" 
-              checked={checked} 
+            <input
+              type="checkbox"
+              checked={checked}
               onChange={toggleDoNotShow} />
 
             { checked ? <IoMdCheckboxOutline /> : <IoMdSquareOutline /> }
 
             <span>Don't ask again</span>
           </label>
-          
-          <button 
+
+          <button
             className="p6o-no-thanks"
             onClick={props.onNoThanks}>
             No thanks
           </button>
 
-          <button 
+          <button
             className="p6o-take-tour"
             onClick={props.onTakeTour}>
             Yes, take the tour
