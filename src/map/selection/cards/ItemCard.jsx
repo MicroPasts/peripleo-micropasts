@@ -46,7 +46,7 @@ const ItemCard = props => {
 
   const descriptions = getDescriptions(node);
 
-  const sourceUrl = 
+  const sourceUrl =
     node.properties?.url || node?.identifier || node.id;
 
   const when = parseWhen(node.properties?.when || node.when);
@@ -55,7 +55,7 @@ const ItemCard = props => {
 
   const blockList = props.config.link_icons?.filter(p => !p.img).map(p => p.pattern);
 
-  const externalLinks = blockList ? 
+  const externalLinks = blockList ?
     store.getExternalLinks(node.id).filter(l => {
       const id = l.identifier || l.id;
       return !blockList.find(pattern => id.includes(pattern));
@@ -71,25 +71,26 @@ const ItemCard = props => {
     referrer: props,
     nodeList: connected
   });
-  
-  const tagNav = () => 
-    GoogleAnalytics.tagNavigation(sourceUrl);
 
+  const tagNav = evt => {
+    evt.preventDefault();
+    GoogleAnalytics.tagNavigation(sourceUrl);
+  }
   // Temporary hack!
-  const color = SIGNATURE_COLOR[3]; 
+  const color = SIGNATURE_COLOR[3];
 
   return (
-    <div 
+    <div
       ref={el}
       className="p6o-selection-card p6o-selection-itemcard">
-      <header 
+      <header
         aria-disabled
-        style={{ 
+        style={{
           backgroundColor: color,
           justifyContent: props.backButton ? 'space-between' : 'flex-end'
         }}>
-        
-        {props.backButton && 
+
+        {props.backButton &&
           <button
             aria-label="Go Back"
             onClick={props.onGoBack}>
@@ -103,31 +104,31 @@ const ItemCard = props => {
           <IoCloseSharp />
         </button>
       </header>
-      <div 
+      <div
         className="p6o-selection-content"
         style={{ maxHeight: `${window.innerHeight - 46}px` }}>
         {image &&
-          <div 
+          <div
             className="p6o-selection-header-image"
-            style={{ backgroundImage: `url("${image.src}")` }}>   
+            style={{ backgroundImage: `url("${image.src}")` }}>
 
             {image.accreditation &&
-              <span 
-                className="p6o-selection-header-image-accreditation">{image.accreditation}</span> 
+              <span
+                className="p6o-selection-header-image-accreditation">{image.accreditation}</span>
             }
 
-            <button 
+            <button
               className="p6o-selection-header-image-btn-full"
               onClick={() => setShowLightbox(true) }>
               <CgArrowsExpandRight />
             </button>
-          </div> 
+          </div>
         }
 
         <main
-          role="region" 
+          role="region"
           aria-live="polite">
-          
+
           <div
             className="p6o-selection-main-fixed">
 
@@ -135,8 +136,8 @@ const ItemCard = props => {
               className="p6o-source-link"
               onClick={() => window.open(sourceUrl, '_blank')}>
               <h1>
-                <a 
-                  href={sourceUrl} 
+                <a
+                  href={sourceUrl}
                   target="_blank"
                   onClick={tagNav}>
                   {node.title}
@@ -144,15 +145,15 @@ const ItemCard = props => {
               </h1>
 
               <h2>
-                <a 
-                  href={sourceUrl} 
+                <a
+                  href={sourceUrl}
                   target="_blank"
                   onClick={tagNav}>
                   View page on {node.dataset}<RiExternalLinkLine />
                 </a>
               </h2>
-              
-              <a 
+
+              <a
                 href={sourceUrl}
                 className="p6o-new-tab-hint"
                 onClick={tagNav}
@@ -163,7 +164,7 @@ const ItemCard = props => {
               {getTypes(node).join(', ')}
             </p>
 
-            {when && 
+            {when &&
               <p className="when">
                 <strong>Timespan:</strong> {when.label}
               </p>
@@ -171,8 +172,8 @@ const ItemCard = props => {
           </div>
 
           <div className="p6o-selection-main-flex">
-            {descriptions.map((d, idx) => 
-              <p key={idx} 
+            {descriptions.map((d, idx) =>
+              <p key={idx}
                 className="p6o-selection-description"
                 aria-level={3}
                 dangerouslySetInnerHTML={{
@@ -201,7 +202,7 @@ const ItemCard = props => {
         </footer>
       </div>
 
-      {showLightbox && 
+      {showLightbox &&
         <FullscreenImage image={image} onClose={() => setShowLightbox(false)} />
       }
     </div>
